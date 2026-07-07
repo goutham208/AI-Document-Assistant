@@ -4,7 +4,7 @@ import requests
 # -----------------------------
 # Configuration
 # -----------------------------
-API_URL = "http://127.0.0.1:8000"
+API_URL = "https://ai-document-assistant-4hq9.onrender.com"
 
 st.set_page_config(
     page_title="AI Document Assistant",
@@ -68,7 +68,10 @@ with st.sidebar:
 
             else:
                 st.error("Upload failed.")
-                st.json(response.json())
+
+                st.write("Status Code:", response.status_code)
+                st.write("Response Text:")
+                st.text(response.text)
 
     st.divider()
 
@@ -186,4 +189,6 @@ if question:
 
                     st.error("Something went wrong!")
 
-                    st.json(response.json())
+                    st.write("Status Code:", response.status_code)
+                    st.write("Response Text:")
+                    st.text(response.text)
